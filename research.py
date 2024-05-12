@@ -36,8 +36,8 @@ st.plotly_chart(fig)
 #Maxim report
 
 ticker_pdf_mapping = {
-    'AAPL': {'file_name': 'AAPL_report.pdf', 'file_path': '/Users/seansozi/Downloads/AAPL_Report.pdf'},
-    'BYON': {'file_name': 'BYON_report.pdf', 'file_path': '/Users/seansozi/Downloads/BYON_Report.pdf'}
+    'AAPL': {'file_name': 'AAPL_report.pdf', 'file_url': 'https://maxim.bluematrix.com/sellside/EmailDocViewer?encrypt=b1459a90-e146-434d-bb73-c1ad6ff88004&mime=pdf&co=maxim&id=tforte@maximgrp.com&source=mail'},
+    'BYON': {'file_name': 'BYON_report.pdf', 'file_url': 'https://maxim.bluematrix.com/sellside/EmailDocViewer?encrypt=ed9c8963-d9bc-4ab4-a4df-7aac0bb7ae0e&mime=pdf&co=maxim&id=tforte@maximgrp.com&source=mail'}
 }
 ticker_data = ticker_pdf_mapping.get(ticker)
 
@@ -49,7 +49,9 @@ api_key = "8VCEC6hJuyQuYDVNlvFpGwJCcnBaqudG"
 
 with maxim_report:
     st.header('Maxim Group Report')
-    pdf_data = open(ticker_data['file_path'], 'rb').read()
+    pdf_url = ticker_data.get('file_url')
+    pdf_response = requests.get(pdf_url)
+    pdf_data = pdf_response.content
     pdf_base64 = base64.b64encode(pdf_data).decode('utf-8')
     pdf_embed = f'<iframe src="data:application/pdf;base64,{pdf_base64}" width="700" height="500" type="application/pdf"></iframe>'
     st.markdown(pdf_embed, unsafe_allow_html=True)
@@ -96,3 +98,4 @@ with news:
         st.image(item['image_url'], caption='Image', use_column_width=True)
         st.write(item['text'])
         st.write(f"Read more: [{item['source_name']}]({item['news_url']})")
+
