@@ -36,8 +36,8 @@ st.plotly_chart(fig)
 #Maxim report
 
 ticker_pdf_mapping = {
-    'AAPL': {'file_name': 'AAPL_report.pdf', 'file_url': 'https://maxim.bluematrix.com/sellside/EmailDocViewer?encrypt=b1459a90-e146-434d-bb73-c1ad6ff88004&mime=pdf&co=maxim&id=tforte@maximgrp.com&source=mail'},
-    'BYON': {'file_name': 'BYON_report.pdf', 'file_url': 'https://maxim.bluematrix.com/sellside/EmailDocViewer?encrypt=ed9c8963-d9bc-4ab4-a4df-7aac0bb7ae0e&mime=pdf&co=maxim&id=tforte@maximgrp.com&source=mail'}
+    'AAPL': {'file_name': 'AAPL_report.pdf', 'file_url': 'https://github.com/seansozi/stockresearch/blob/main/AAPL_Report.pdf'},
+    'BYON': {'file_name': 'BYON_report.pdf', 'file_url': 'https://github.com/seansozi/stockresearch/blob/main/BYON_Report.pdf'}
 }
 ticker_data = ticker_pdf_mapping.get(ticker)
 
@@ -98,4 +98,3 @@ with news:
         st.image(item['image_url'], caption='Image', use_column_width=True)
         st.write(item['text'])
         st.write(f"Read more: [{item['source_name']}]({item['news_url']})")
-
