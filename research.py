@@ -8,7 +8,7 @@ from urllib.request import urlopen, Request
 
 st.title("Stocks Dashboard")
 
-ticker = st.selectbox('Select Ticker',('AAPL', 'BYON'))
+ticker = st.selectbox('Select Ticker',('BYON', 'AAPL'))
 
 ratings = {
     'AAPL': 'Hold',
@@ -36,8 +36,8 @@ st.plotly_chart(fig)
 #Maxim report
 
 ticker_pdf_mapping = {
-    'AAPL': {'file_name': 'AAPL_report.pdf', 'file_url': 'https://github.com/seansozi/stockresearch/blob/main/AAPL_Report.pdf'},
-    'BYON': {'file_name': 'BYON_report.pdf', 'file_url': 'https://github.com/seansozi/stockresearch/blob/main/BYON_Report.pdf'}
+    'AAPL': {'file_name': 'AAPL_report.pdf', 'file_url': 'https://maxim.bluematrix.com/sellside/EmailDocViewer?encrypt=b1459a90-e146-434d-bb73-c1ad6ff88004&mime=pdf&co=maxim&id=tforte@maximgrp.com&source=mailf'},
+    'BYON': {'file_name': 'BYON_report.pdf', 'file_url': 'https://maxim.bluematrix.com/sellside/EmailDocViewer?encrypt=ed9c8963-d9bc-4ab4-a4df-7aac0bb7ae0e&mime=pdf&co=maxim&id=tforte@maximgrp.com&source=mailf'}
 }
 ticker_data = ticker_pdf_mapping.get(ticker)
 
@@ -50,11 +50,7 @@ api_key = "8VCEC6hJuyQuYDVNlvFpGwJCcnBaqudG"
 with maxim_report:
     st.header('Maxim Group Report')
     pdf_url = ticker_data.get('file_url')
-    pdf_response = requests.get(pdf_url)
-    pdf_data = pdf_response.content
-    pdf_base64 = base64.b64encode(pdf_data).decode('utf-8')
-    pdf_embed = f'<iframe src="data:application/pdf;base64,{pdf_base64}" width="700" height="500" type="application/pdf"></iframe>'
-    st.markdown(pdf_embed, unsafe_allow_html=True)
+    st.write(pdf_url)
 
 with pricing_data:
   st.header('Price Movements')
@@ -81,8 +77,8 @@ with fundamental_data:
 with news:
     # Fetch news data
     news_data = []
-    for page in range(1, 6):  # Assuming you have access to 5 pages based on your plan
-        news_url = f'https://stocknewsapi.com/api/v1?tickers={ticker}&items=3&page={page}&token=6juzn82tsqik0j2dhysbzxpm29fqzld9co5sofrv'
+    for page in range(1, 3):  # Assuming you have access to 5 pages based on your plan
+        news_url = f'https://stocknewsapi.com/api/v1?tickers={ticker}&items=2&page={page}&token=ibropa3f2tlngvbvowwzliy3udueqotah3nfbrz1'
         news_response = requests.get(news_url)
         news_data.extend(news_response.json().get('data', []))   
         
