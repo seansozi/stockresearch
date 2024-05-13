@@ -44,7 +44,7 @@ ticker_data = ticker_pdf_mapping.get(ticker)
 
 news, maxim_report, pricing_data, fundamental_data, = st.tabs(['News & Sentiement Analysis', 'Latest Maxim Report', 'Pricing Data', 'Fundamental Analysis'])
 
-api_key = "8VCEC6hJuyQuYDVNlvFpGwJCcnBaqudG"
+api_key = "zj8mxau0zkmagqovaqo0mlzup2vzzkhqtpiyu2ca"
 
 
 with maxim_report:
