@@ -44,7 +44,7 @@ ticker_data = ticker_pdf_mapping.get(ticker)
 
 news, maxim_report, pricing_data, fundamental_data, = st.tabs(['News & Sentiement Analysis', 'Latest Maxim Report', 'Pricing Data', 'Fundamental Analysis'])
 
-api_key = "zj8mxau0zkmagqovaqo0mlzup2vzzkhqtpiyu2ca"
+api_key = "8VCEC6hJuyQuYDVNlvFpGwJCcnBaqudG"
 
 
 with maxim_report:
@@ -78,7 +78,7 @@ with news:
     # Fetch news data
     news_data = []
     for page in range(1, 3):  # Assuming you have access to 5 pages based on your plan
-        news_url = f'https://stocknewsapi.com/api/v1?tickers={ticker}&items=2&page={page}&token=ibropa3f2tlngvbvowwzliy3udueqotah3nfbrz1'
+        news_url = f'https://stocknewsapi.com/api/v1?tickers={ticker}&items=2&page={page}&token=zj8mxau0zkmagqovaqo0mlzup2vzzkhqtpiyu2ca'
         news_response = requests.get(news_url)
         news_data.extend(news_response.json().get('data', []))   
         
